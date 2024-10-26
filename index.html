@@ -13,14 +13,16 @@
 
     try {
 
-        alert(navigator.userAgent);
+        console.log("navigator.userAgent: "navigator.userAgent);
+
+        const pdfUrl = './200.pdf'; // PDFファイルのURL
+        const isAndroid = /Android/i.test(navigator.userAgent); // Android端末の判定
+
+        console.log(isAndroid);
 
         if (flag) {
             throw new Error('終了します');
         }
-
-        const pdfUrl = './200.pdf'; // PDFファイルのURL
-        const isAndroid = /Android/i.test(navigator.userAgent); // Android端末の判定
 
         // Android端末の場合はGoogle Docsビューアで開く
         const redirectUrl = isAndroid 
