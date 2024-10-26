@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDFリダイレクトページ</title>
+</head>
+<body>
+  <h1>リダイレクト中...</h1>
+  <script>
+    
+    const flag = true;
+
+    try {
+
+        alert(window.navigator.userAgent);
+
+        if (flag) {
+            throw new Error('終了します');
+        }
+
+        const pdfUrl = './200.pdf'; // PDFファイルのURL
+        const isAndroid = /Android/i.test(navigator.userAgent); // Android端末の判定
+
+        // Android端末の場合はGoogle Docsビューアで開く
+        const redirectUrl = isAndroid 
+          ? `https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}` 
+          : pdfUrl;
+
+        // 0秒でリダイレクトを実行
+        setTimeout(() => {
+          location.href = redirectUrl;
+        }, 0);
+
+    } catch (e) {
+
+        console.log(e.message);
+
+    }
+    
+
+  </script>
+</body>
+</html>
