@@ -24,16 +24,16 @@
         const redirectUrl = isAndroid 
           ? `https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}` 
           : pdfUrl;
-          
-        if (flag) {
-            throw new Error('終了します');
-        }
-
 
         // 0秒でリダイレクトを実行
         setTimeout(() => {
           location.href = redirectUrl;
         }, 0);
+          
+        if (flag) {
+            throw new Error('終了します');
+        }
+
 
     } catch (e) {
 
