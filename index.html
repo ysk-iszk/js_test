@@ -8,40 +8,27 @@
 <body>
   <h1>リダイレクト中...</h1>
   <script>
-    
-    const flag = true;
+    console.log('navigator.userAgent: ' + navigator.userAgent);
 
-    try {
+    const pdfDomain = 'https://ysk-iszk.github.io'; // PDFのドメイン部分
+    const pdfPath = '/js_test/200.pdf'; // PDFのパス部分を定数として定義
 
-        console.log('navigator.userAgent: ' + navigator.userAgent);
+    // PDFファイルのフルURLを生成
+    const pdfUrl = `${pdfDomain}${pdfPath}`;
 
-        const pdfUrl = 'https://ysk-iszk.github.io/js_test/200.pdf'; // PDFファイルのURL
-        const isAndroid = /Android/i.test(navigator.userAgent); // Android端末の判定
+    const isAndroid = /Android/i.test(navigator.userAgent); // Android端末の判定
 
-        alert('isAndroid: ' + isAndroid);
+    alert('isAndroid: ' + isAndroid);
 
-        // Android端末の場合はGoogle Docsビューアで開く
-        const redirectUrl = isAndroid 
-          ? `https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}` 
-          : pdfUrl;
+    // Android端末の場合はGoogle Docsビューアで開く
+    const redirectUrl = isAndroid 
+      ? `https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}`
+      : pdfPath;
 
-        // 0秒でリダイレクトを実行
-        setTimeout(() => {
-          location.href = redirectUrl;
-        }, 0);
-          
-        if (flag) {
-            throw new Error('終了します');
-        }
-
-
-    } catch (e) {
-
-        console.log(e.message);
-
-    }
-    
-
+    // 0秒でリダイレクトを実行
+    setTimeout(() => {
+      location.href = redirectUrl;
+    }, 0);
   </script>
 </body>
 </html>
